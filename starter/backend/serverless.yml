@@ -10,7 +10,7 @@ plugins:
   - serverless-iam-roles-per-function
   - serverless-reqvalidator-plugin
 
-frameworkVersion: '^3.39.0'
+frameworkVersion: '3'
 
 provider:
   name: aws
@@ -25,7 +25,7 @@ provider:
 
   logs:
     restApi:
-      role: arn:aws:iam::868313218208:role/admin-role
+      role: arn:aws:iam::868313218208:role/api-gateway-cloudwatch
 
   environment:
     TODOS_TABLE: TodosTable-${self:provider.stage}
