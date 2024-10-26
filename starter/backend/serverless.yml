@@ -14,7 +14,7 @@ frameworkVersion: '^3.39.0'
 
 provider:
   name: aws
-  runtime: nodejs16.x 
+  runtime: nodejs16.x
 
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
@@ -33,6 +33,15 @@ provider:
     ATTACHMENT_S3_BUCKET: udacity-todo-images-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 3000
     AUTH_JWKS_URL: 'https://dev-zk4pqg6wxweatyx0.us.auth0.com/.well-known/jwks.json'
+
+  iamRoleStatements:
+  - Effect: Allow
+    Action:
+      - logs:CreateLogGroup
+      - logs:CreateLogStream
+      - logs:PutLogEvents
+    Resource: "*" 
+  
 
 custom:
   documentation:
